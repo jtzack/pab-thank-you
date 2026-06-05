@@ -80,12 +80,14 @@
       overflow-x: hidden;
     }
 
-    /* Halftone riso-dot portrait of the stoic operator — a faint, fixed
-       poster backdrop. The dots are baked obsidian; opacity keeps it subtle
-       so headline + cards stay crisp on top. */
+    /* Halftone riso-dot portrait of the stoic operator. It scrolls WITH the
+       page (covering the full document) so the head reads immediately at the
+       top and flanks the content column from the sides — rather than a fixed
+       layer you only notice on scroll. Dots are baked obsidian; opacity keeps
+       it a backdrop so headline + cards stay crisp on top. */
     body::before {
       content: "";
-      position: fixed;
+      position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
@@ -93,7 +95,7 @@
       background-repeat: no-repeat;
       background-position: center top;
       background-size: cover;
-      opacity: 0.18;
+      opacity: 0.22;
     }
 
     .container {
