@@ -80,23 +80,24 @@
       overflow-x: hidden;
     }
 
-    /* Riso halftone backdrop, in two layers so the dots stay a fixed, fine
-       size no matter how tall the page gets (cover-scaling was ballooning
-       them). Layer 1: a seamless fine dot-field tiled across the whole page.
-       Layer 2: the stoic operator's head, sized in vw and bled off the top so
-       the face reads right behind the headline and flanks the column. Scrolls
-       with the page; opacity keeps it a backdrop under the crisp content. */
+    /* Riso halftone backdrop — one even, fine dot screen of the stoic
+       operator. The source PNG is deliberately TALL (statue at the top, dot
+       field baked all the way down) so background-size:cover always binds by
+       WIDTH, never the page height — which keeps the dots a fine, fixed size
+       no matter how long the page gets (height-binding was ballooning them).
+       Hair bleeds off the top so the face sits behind the headline. Scrolls
+       with the page; light opacity keeps it a backdrop under crisp content. */
     body::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-image: url('assets/statue-dots.png'), url('assets/dot-tile.png');
-      background-repeat: no-repeat, repeat;
-      background-position: center -28px, top left;
-      background-size: min(720px, 82vw) auto, 9px 9px;
-      opacity: 0.5;
+      background-image: url('assets/statue-halftone.png');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      opacity: 0.45;
     }
 
     .container {
