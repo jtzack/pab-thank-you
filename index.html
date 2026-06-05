@@ -80,24 +80,25 @@
       overflow-x: hidden;
     }
 
-    /* Riso halftone backdrop — one even, fine dot screen of the stoic
-       operator. The source PNG is deliberately TALL (statue at the top, dot
-       field baked all the way down) so background-size:cover always binds by
-       WIDTH, never the page height — which keeps the dots a fine, fixed size
-       no matter how long the page gets (height-binding was ballooning them).
-       Hair bleeds off the top so the face sits behind the headline. Scrolls
-       with the page; light opacity keeps it a backdrop under crisp content. */
+    /* Riso halftone backdrop — one even, fine, light dot screen of the stoic
+       operator, inset from the edges by a gutter (like the model). The source
+       PNG is deliberately TALL (statue at top, dot field baked down) so
+       background-size:cover binds by WIDTH, never the page height — keeping the
+       dots a fine, fixed size no matter how long the page gets. The head is
+       sized ~to the content width and dropped so the sunglasses land at the
+       middle of the sneak card. Scrolls with the page; low opacity keeps it a
+       faint backdrop under crisp content. */
     body::before {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: 28px;                 /* stone gutter around the dot field */
       z-index: 0;
       pointer-events: none;
       background-image: url('assets/statue-halftone.png');
       background-repeat: no-repeat;
       background-position: center top;
       background-size: cover;
-      opacity: 0.45;
+      opacity: 0.26;
     }
 
     .container {
