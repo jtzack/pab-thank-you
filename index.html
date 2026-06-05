@@ -95,34 +95,19 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── Brand emblem: the laser-eye mark (PAB's one true icon) ─── */
-    .emblem {
-      width: 52px; height: 52px;
-      border: 2.5px solid var(--obsidian-0);
-      border-radius: var(--radius-sm);
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 9px;
-      background: var(--surface);
-      box-shadow: var(--shadow-hard);
-    }
-    .emblem .eye {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--laser-1);
-      box-shadow: 0 0 8px rgba(255,59,48,0.95);
-    }
-
-    .brand-anchor { margin-bottom: 28px; }
-
     /* ─── Display headline (Cinzel, inscriptional caps) ─── */
     h1.display {
       font-family: var(--font-display);
       font-weight: 900;
       text-transform: uppercase;
-      font-size: clamp(30px, 6.4vw, 56px);
+      /* Sized in vw so the headline scales to stay on a single line
+         instead of wrapping. */
+      font-size: clamp(15px, 4.4vw, 38px);
       line-height: 1.05;
       letter-spacing: 0.02em;
       color: var(--text-strong);
       margin-bottom: 28px;
+      white-space: nowrap;
     }
 
     /* Accent word carries the laser charge — solid, never a gradient */
@@ -136,7 +121,7 @@
       padding: 36px 36px 34px;
       margin-bottom: 28px;
       box-shadow: var(--shadow-hard-lg);
-      text-align: left;
+      text-align: center;
     }
 
     /* Mono eyebrow = the "system voice" — wide-tracked caps, // prefix */
@@ -155,18 +140,18 @@
       font-family: var(--font-display);
       font-weight: 800;
       text-transform: uppercase;
-      font-size: clamp(24px, 4vw, 34px);
-      line-height: 1.08;
+      font-size: clamp(20px, 3vw, 26px);
+      line-height: 1.1;
       letter-spacing: 0.03em;
       color: var(--text-strong);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .card p {
       font-family: var(--font-sans);
       font-weight: 400;
-      font-size: 17px;
-      line-height: 1.65;
+      font-size: 15px;
+      line-height: 1.6;
       color: var(--text-body);
     }
 
@@ -245,14 +230,15 @@
     @media (max-width: 640px) {
       /* Tighter chrome on phones so the form gets the lion's share of the screen */
       body { padding: 26px 16px 32px; }
-      .brand-anchor { margin-bottom: 18px; }
       h1.display { margin-bottom: 18px; }
       .card { padding: 24px 18px 22px; margin-bottom: 18px; box-shadow: var(--shadow-hard); }
       .survey-embed { box-shadow: var(--shadow-hard); }
 
-      /* Move the hero headline into the card; hide the standalone one. */
+      /* Move the hero headline into the card; hide the standalone one. The
+         card's padding leaves less width, so scale the nowrap headline down a
+         hair to keep it on one line. */
       .display.hero-outer { display: none; }
-      .display.hero-in-card { display: block; margin-bottom: 16px; }
+      .display.hero-in-card { display: block; margin-bottom: 16px; font-size: clamp(13px, 4vw, 38px); }
 
       /* Trim the card on phones: swap in the short one-line copy, shrink heads. */
       .card p.long-copy { display: none; }
@@ -268,11 +254,6 @@
 <body>
   <div class="container">
 
-    <!-- Brand anchor: the laser-eye emblem -->
-    <div class="brand-anchor">
-      <span class="emblem"><span class="eye"></span><span class="eye"></span></span>
-    </div>
-
     <!-- Headline (desktop/tablet: above the card) -->
     <h1 class="display hero-outer">
       Boom! You're <span class="accent">on the waitlist.</span>
@@ -286,7 +267,7 @@
       </h1>
       <div class="card-eyebrow">In the meantime</div>
       <h2>Want a sneak peek?</h2>
-      <p class="long-copy">Answer <strong>3 quick questions</strong> and we'll give you a free sneak peek of our <strong>Become Known For A Niche You Own</strong> module.</p>
+      <p class="long-copy">Answer <strong>3 quick questions</strong> and we'll give you a free sneak peek.</p>
       <p class="short-copy">Answer <strong>3 quick questions</strong> and we'll send it over.</p>
     </div>
 
@@ -300,9 +281,9 @@
     <footer>
       <div class="wordmark">
         <span class="mark"><span class="eye"></span><span class="eye"></span></span>
-        <span class="name">Start Writing Online</span>
+        <span class="name">Personal Agent Bootcamp</span>
       </div>
-      &copy; 2026 Start Writing Online. All rights reserved.
+      &copy; 2026 Personal Agent Bootcamp. All rights reserved.
     </footer>
   </div>
 
@@ -314,7 +295,7 @@
       try { return decodeURIComponent(match[1]); } catch (e) { return match[1]; }
     }
     var email = readEmail(window.location.hash) || readEmail(window.location.search) || 'xxxxx';
-    var typeformId = 'qJJujJ5y';
+    var typeformId = 'EwktNZ7Z';
     var src = 'https://form.typeform.com/to/' + typeformId + '#email=' + encodeURIComponent(email);
     document.getElementById('typeform-embed').src = src;
   </script>
