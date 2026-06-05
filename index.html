@@ -7,75 +7,77 @@
   <meta name="description" content="You're on the waitlist for the Self-Publishing Studio. We'll be in touch when enrollment opens." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- PAB type roles: Cinzel (display), Space Grotesk (UI/body), Space Mono (system voice) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    /* ── Ship 30 for 30 design tokens ──
-       Midnight starfield, electric red, warm sunset-gradient CTAs, bold Inter. */
+    /* ── Personal Agent Bootcamp design tokens ──
+       Cool stone canvas, obsidian ink, laser-red charge. 2px ink borders,
+       hard-offset "chiseled" shadows, tight corners, no gradients. */
     :root {
-      /* Brand core */
-      --s30-red:        #D31652;
-      --s30-grad-left:  #D31651;
-      --s30-grad-mid:   #E84B29;
-      --s30-grad-right: #FF8203;
-      --s30-cta-gradient: linear-gradient(95deg, #D31651 0%, #E84B29 45%, #FF8203 100%);
+      /* Stone / cool marble */
+      --stone-0: #FFFFFF;
+      --stone-1: #F2F5F8;
+      --stone-2: #E3E8EE;
+      --stone-3: #CAD2DB;
+      --stone-4: #A2ADB8;
 
-      /* Backgrounds — the midnight */
-      --s30-bg-deep:    #10142A;
-      --s30-bg:         #171B38;
+      /* Obsidian / graphite (ink, inverse surfaces, every border) */
+      --obsidian-0: #15181C;
+      --obsidian-1: #21262C;
+      --obsidian-2: #343B43;
+      --obsidian-3: #565F69;
+      --obsidian-4: #828C97;
 
-      /* Surfaces — cards on midnight */
-      --s30-surface:    #222749;
-      --s30-surface-2:  #2D335D;
-      --s30-surface-3:  #353B6B;
-      --s30-border:     #353B6B;
+      /* Laser red — the signature charge (live / interactive only) */
+      --laser-glow: #FF3B30;
+      --laser-1: #FF1E1E;
+      --laser-2: #E10E0E;
+      --laser-3: #B00808;
+      --laser-4: #7A0606;
 
-      /* Text */
-      --s30-fg:         #FFFFFF;
-      --s30-fg-1:       #EDEEF6;
-      --s30-fg-2:       #9B9DB8;
-      --s30-fg-3:       #6E7196;
+      /* Pop pastels (one per block) */
+      --sky: #93CFE8;
+      --blush: #F2A6AE;
 
-      --s30-success:    #3DD68C;
+      /* Semantic */
+      --bg:           var(--stone-1);
+      --surface:      var(--stone-0);
+      --text-strong:  var(--obsidian-0);
+      --text-body:    var(--obsidian-1);
+      --text-muted:   var(--obsidian-3);
+      --text-faint:   var(--obsidian-4);
+      --accent:       var(--laser-2);
 
-      --s30-font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      /* Type */
+      --font-display: 'Cinzel', 'Times New Roman', serif;
+      --font-sans:    'Space Grotesk', system-ui, sans-serif;
+      --font-mono:    'Space Mono', 'SF Mono', ui-monospace, monospace;
 
-      /* Radii */
-      --s30-radius:     10px;   /* cards */
-      --s30-radius-btn: 8px;    /* buttons: rounded rectangle, NOT pill */
-
-      /* Shadows / elevation */
-      --s30-shadow-card: 0 8px 30px rgba(0,0,0,0.35);
-      --s30-shadow-cta:  0 10px 30px rgba(211,22,81,0.35);
+      /* Shape, border, shadow — the brand's skeleton */
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --stroke-bold: 2px;
+      --shadow-hard:    4px 4px 0 var(--obsidian-0);
+      --shadow-hard-lg: 7px 7px 0 var(--obsidian-0);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; background: var(--s30-bg-deep); }
-    ::selection { background: var(--s30-red); color: #fff; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    ::selection { background: var(--laser-2); color: #fff; }
 
     body {
-      font-family: var(--s30-font-sans);
+      font-family: var(--font-sans);
       font-weight: 400;
-      color: var(--s30-fg-1);
+      color: var(--text-body);
       min-height: 100vh;
-      padding: 36px 20px 72px;
+      /* Flat cool-stone field — no gradients, no textures. */
+      background: var(--bg);
+      padding: 44px 20px 72px;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
-
-      /* Signature midnight starfield — sparse, low-opacity white dots,
-         slightly denser toward the top. Fixed so it reads as a sky. */
-      background-color: var(--s30-bg-deep);
-      background-image:
-        radial-gradient(1.5px 1.5px at 50% 50%, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.4), transparent),
-        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.38), transparent),
-        radial-gradient(1px 1px at 15% 30%, rgba(255,255,255,0.28), transparent),
-        radial-gradient(1px 1px at 65% 85%, rgba(255,255,255,0.30), transparent);
-      background-size: 140px 140px, 90px 110px, 220px 180px, 170px 150px, 110px 120px;
-      background-position: 0 0, 25px 40px, 70px 10px, 10px 80px, 40px 60px;
-      background-attachment: fixed;
     }
 
     .container {
@@ -85,77 +87,92 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      animation: fadeUp 0.5s ease-out;
+      animation: fadeUp 0.45s var(--ease-out, cubic-bezier(0.22,1,0.36,1)) both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── Display headline ─── */
+    /* ─── Brand emblem: the laser-eye mark (PAB's one true icon) ─── */
+    .emblem {
+      width: 52px; height: 52px;
+      border: 2.5px solid var(--obsidian-0);
+      border-radius: var(--radius-sm);
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 9px;
+      background: var(--surface);
+      box-shadow: var(--shadow-hard);
+    }
+    .emblem .eye {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--laser-1);
+      box-shadow: 0 0 8px rgba(255,59,48,0.95);
+    }
+
+    .brand-anchor { margin-bottom: 28px; }
+
+    /* ─── Display headline (Cinzel, inscriptional caps) ─── */
     h1.display {
-      font-family: var(--s30-font-sans);
+      font-family: var(--font-display);
       font-weight: 900;
-      /* Sized in vw so the headline scales to stay on a single line
-         instead of wrapping — keeps the hero short so the form fits. */
-      font-size: clamp(20px, 5.4vw, 44px);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--s30-fg);
-      margin-bottom: 24px;
-      white-space: nowrap;
+      text-transform: uppercase;
+      font-size: clamp(30px, 6.4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--text-strong);
+      margin-bottom: 28px;
     }
 
-    /* Accent gets the signature sunset gradient as text fill */
-    h1.display .accent {
-      background: var(--s30-cta-gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: var(--s30-grad-mid); /* fallback */
-    }
+    /* Accent word carries the laser charge — solid, never a gradient */
+    h1.display .accent { color: var(--laser-2); }
 
-    /* ─── Sneak-peek card ─── */
+    /* ─── Sneak-peek card: stone surface, 2px ink, chiseled shadow ─── */
     .card {
-      background: var(--s30-surface-2);
-      border-radius: var(--s30-radius);
-      padding: 32px 32px 30px;
-      margin-bottom: 24px;
-      box-shadow: var(--s30-shadow-card);
+      background: var(--surface);
+      border: var(--stroke-bold) solid var(--obsidian-0);
+      border-radius: var(--radius-md);
+      padding: 36px 36px 34px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-hard-lg);
+      text-align: left;
     }
 
+    /* Mono eyebrow = the "system voice" — wide-tracked caps, // prefix */
     .card-eyebrow {
-      font-family: var(--s30-font-sans);
+      font-family: var(--font-mono);
       font-weight: 700;
       font-size: 12px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--s30-red);
-      margin-bottom: 12px;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
+    .card-eyebrow::before { content: "// "; }
 
     .card h2 {
-      font-family: var(--s30-font-sans);
+      font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(26px, 4vw, 36px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--s30-fg);
+      text-transform: uppercase;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.08;
+      letter-spacing: 0.03em;
+      color: var(--text-strong);
       margin-bottom: 14px;
     }
 
     .card p {
-      font-family: var(--s30-font-sans);
+      font-family: var(--font-sans);
       font-weight: 400;
       font-size: 17px;
-      line-height: 1.6;
-      color: var(--s30-fg-2);
+      line-height: 1.65;
+      color: var(--text-body);
     }
 
-    /* Bold-the-payoff: key phrase pulled out in white */
+    /* Bold-the-payoff: key phrase pulled out in ink */
     .card p strong {
-      color: var(--s30-fg);
+      color: var(--text-strong);
       font-weight: 700;
     }
 
@@ -165,18 +182,17 @@
     /* The in-card headline is a mobile-only relocation of the hero */
     .display.hero-in-card { display: none; }
 
-    /* ─── Survey embed ─── */
-    .survey-section {
-      margin-top: 8px;
-    }
+    /* ─── Survey embed: framed in 2px ink with a chiseled shadow ─── */
+    .survey-section { margin-top: 8px; }
 
     .survey-embed {
       width: 100%;
-      background: var(--s30-surface);
-      border-radius: var(--s30-radius);
+      background: var(--obsidian-0);
+      border: var(--stroke-bold) solid var(--obsidian-0);
+      border-radius: var(--radius-md);
       height: 480px;
       overflow: hidden;
-      box-shadow: var(--s30-shadow-card);
+      box-shadow: var(--shadow-hard-lg);
     }
 
     .survey-embed iframe {
@@ -188,59 +204,74 @@
 
     /* ─── Footer ─── */
     footer {
-      margin-top: 36px;
+      margin-top: 44px;
       text-align: center;
-      font-family: var(--s30-font-sans);
-      font-size: 13px;
-      letter-spacing: 0.04em;
-      color: var(--s30-fg-3);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
     }
 
     footer .wordmark {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 800;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-      color: var(--s30-fg);
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 14px;
     }
 
-    footer .wordmark .ship {
-      font-size: 19px;
-      line-height: 1;
+    footer .wordmark .mark {
+      width: 34px; height: 34px;
+      border: 2px solid var(--obsidian-0);
+      border-radius: var(--radius-sm);
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px;
+    }
+    footer .wordmark .mark .eye {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--laser-1);
+      box-shadow: 0 0 6px rgba(255,59,48,0.9);
+    }
+
+    footer .wordmark .name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-strong);
     }
 
     @media (max-width: 640px) {
       /* Tighter chrome on phones so the form gets the lion's share of the screen */
-      body { padding: 20px 16px 28px; }
-      h1.display { margin-bottom: 16px; }
-      .card { padding: 22px 14px 18px; margin-bottom: 16px; }
+      body { padding: 26px 16px 32px; }
+      .brand-anchor { margin-bottom: 18px; }
+      h1.display { margin-bottom: 18px; }
+      .card { padding: 24px 18px 22px; margin-bottom: 18px; box-shadow: var(--shadow-hard); }
+      .survey-embed { box-shadow: var(--shadow-hard); }
 
-      /* Move the hero headline into the card; hide the standalone one. The
-         card's padding leaves less width, so on the narrowest phones let the
-         nowrap headline scale down a hair to stay on one line. */
+      /* Move the hero headline into the card; hide the standalone one. */
       .display.hero-outer { display: none; }
-      .display.hero-in-card { display: block; margin-bottom: 16px; font-size: clamp(17px, 5.4vw, 44px); }
+      .display.hero-in-card { display: block; margin-bottom: 16px; }
 
-      /* Trim the card on phones: drop the eyebrow, swap in the short one-line
-         copy, and shrink the "Want a sneak peek?" heading. */
-      .card-eyebrow { display: none; }
+      /* Trim the card on phones: swap in the short one-line copy, shrink heads. */
       .card p.long-copy { display: none; }
-      .card p.short-copy { display: block; font-size: 14px; }
-      .card h2 { font-size: 18px; margin-bottom: 8px; }
+      .card p.short-copy { display: block; font-size: 15px; }
 
-      /* Let the embed fill most of the viewport instead of a fixed 460px so
+      /* Let the embed fill most of the viewport instead of a fixed height so
          Typeform's questions + button aren't cut off. dvh tracks the visible
-         area as the mobile browser chrome shows/hides (vh would not). The px
-         height is a fallback for browsers without dvh support. */
+         area as the mobile browser chrome shows/hides. */
       .survey-embed { height: 520px; height: 80dvh; min-height: 440px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <!-- Brand anchor: the laser-eye emblem -->
+    <div class="brand-anchor">
+      <span class="emblem"><span class="eye"></span><span class="eye"></span></span>
+    </div>
 
     <!-- Headline (desktop/tablet: above the card) -->
     <h1 class="display hero-outer">
@@ -267,7 +298,10 @@
     </div>
 
     <footer>
-      <div class="wordmark"><span class="ship">🚢</span> Start Writing Online</div>
+      <div class="wordmark">
+        <span class="mark"><span class="eye"></span><span class="eye"></span></span>
+        <span class="name">Start Writing Online</span>
+      </div>
       &copy; 2026 Start Writing Online. All rights reserved.
     </footer>
   </div>
