@@ -80,6 +80,22 @@
       overflow-x: hidden;
     }
 
+    /* Halftone riso-dot portrait of the stoic operator — a faint, fixed
+       poster backdrop. The dots are baked obsidian; opacity keeps it subtle
+       so headline + cards stay crisp on top. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('assets/statue-halftone.png');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+      opacity: 0.18;
+    }
+
     .container {
       max-width: 680px;
       width: 100%;
