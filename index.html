@@ -81,17 +81,21 @@
     }
 
     /* Riso halftone backdrop — one even, fine, light dot screen of the stoic
-       operator, inset from the edges by a gutter (like the model). The source
-       PNG is deliberately TALL (statue at top, dot field baked down) so
-       background-size:cover binds by WIDTH, never the page height — keeping the
-       dots a fine, fixed size no matter how long the page gets. The head is
-       sized ~to the content width and dropped so the sunglasses land at the
-       middle of the sneak card. Scrolls with the page; low opacity keeps it a
-       faint backdrop under crisp content. */
+       operator. Constrained to a centered band (~the model's artboard width)
+       so the statue stays a consistent size RELATIVE TO THE CONTENT on any
+       screen — it no longer balloons on wide desktops. The source PNG is tall
+       (statue at top, dot field baked down) so cover binds by width, keeping
+       the dots fine at any page length. The statue is baked slightly left so
+       his nose and one sunglasses lens peek into the left margin, the lens at
+       the sneak card's middle; hair sits behind the headline. Light opacity. */
     body::before {
       content: "";
       position: absolute;
-      inset: 28px;                 /* stone gutter around the dot field */
+      top: 28px;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100% - 56px, 1040px);   /* gutter on the sides; capped like the artboard */
       z-index: 0;
       pointer-events: none;
       background-image: url('assets/statue-halftone.png');
